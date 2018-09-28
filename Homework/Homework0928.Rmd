@@ -1,7 +1,7 @@
 ---
 title: "Homework1"
 author: "A105260028"
-date: "2018¦~9¤ë28¤é"
+date: "2018å¹´9æœˆ28æ—¥"
 output: html_document
 ---
 ```{r include = FALSE}
