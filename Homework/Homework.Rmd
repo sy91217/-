@@ -1,9 +1,11 @@
 ---
 title: "Homework1"
 author: "A105260028"
-date: "2018¦~9¤ë28¤é"
+date: "2018Â¦~9Â¤Ã«28Â¤Ã©"
 output: html_document
 ---
+
+```{r include = FALSE}
 knitr::opts_chunk$set(
   echo = FALSE,          # don't show code
   warning = FALSE,       # don't show warnings
