@@ -4,6 +4,7 @@ author: "A105260028"
 date: "2018年9月28日"
 output: html_document
 ---
+```{r include = FALSE}
 #浮點數(有小數點)的數值,R 語言預設儲存為浮點數
 my_num1 <- 2.33
 my_num1
