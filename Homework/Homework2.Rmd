@@ -4,6 +4,9 @@ author: "A105260028"
 date: "2018/09/28"
 output: html_document
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 #浮點數(有小數點)的數值,R 語言預設儲存為浮點數
 ```{r}
@@ -280,17 +283,19 @@ years_diff
 ```
 
 #1999年9月21日1時47分16秒發生震央位於南投縣集集鎮,芮氏規模 7.3 的地震,請以文字記錄這個時間,並指派給majorquaketime
+```{r}
 major_quake_time <- "1999-9-21 01:47:16"
+```
 
 #1999年9月21日1時57分15秒發生第一個芮氏規模超過6的餘震,請以文字記錄這個時間,並指派給firstaftershocktime
+```{r}
 first_aftershock_time <- "1999-9-21 01:57:15"
-
+```
 #將前兩題的生成的變數轉換為時間類型,計算間隔多久發生第一個芮氏規模超過6的餘震
 ```{r}
 major_quake_time <- as.POSIXct("1999-9-21 01:47:16")
 first_aftershock_time <- as.POSIXct("1999-9-21 01:57:15")
 first_aftershock_time - major_quake_time
 ```
-
 
 
