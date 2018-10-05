@@ -1,0 +1,18 @@
+---
+title: "Homework0930"
+author: "A105260028"
+date: "2018/10/05"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##作業一 :D
+
+```{r}
+1+2+3+4+5+6
+```
