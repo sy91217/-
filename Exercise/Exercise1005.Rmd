@@ -1,0 +1,336 @@
+---
+title: "Exercise1005"
+author: "A105260028"
+date: "2018/10/05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#數值的運算
+```{r}
+first_num <- 8
+second_num <- 7
+first_num + second_num
+first_num - second_num
+first_num * second_num
+first_num / second_num
+first_num^second_num
+first_num %% second_num
+```
+
+#整數的運算
+```{r}
+first_int <- 8L
+second_int <- 7L
+ans <- first_int * second_int
+ans
+class(ans)
+ans <- first_int / second_int
+ans
+class(ans)
+```
+
+#數值與整數的運算
+```{r}
+my_num <- 8
+my_int <- 7L
+ans <- my_num + my_int
+class(ans)
+```
+
+#邏輯值的運算
+```{r}
+my_num <- 0
+my_int <- 0L
+my_logi <- FALSE
+my_num == my_logi
+my_int == my_logi
+my_num <- 1
+my_int <- 1L
+my_logi <- TRUE
+my_num == my_logi
+my_int == my_logi
+```
+
+#數值、整數與邏輯值的運算
+```{r}
+my_logi <- TRUE
+ans <- my_num + my_int + my_logi
+ans
+class(ans)
+my_logi <- FALSE
+ans <- my_num + my_int + my_logi
+ans
+class(ans)
+```
+
+#使用C函數集結元素
+```{r}
+x <- c(1,2,3,4) #數字向量
+x
+season_1 <- "spring"
+season_2 <- "summer"
+season_3 <- "autumn"
+season_4 <- "winter"
+four_seasons <- c("spring", "summer", "autumn", "winter") #文字向量
+four_seasons
+rep("2", times = 10)
+rep("R", times = 10)
+seq(from = 1, to = 10, by = 1) #等差函數
+1:10
+```
+
+#向量只能包含一種變數類型
+```{r}
+lucky_numbers <- c(7L, 24)
+class(lucky_numbers[1])
+lucky_numbers <- c(7L, FALSE)
+lucky_numbers
+class(lucky_numbers[2])
+mixed_vars <- c(TRUE, 7L, 24, "spring")
+mixed_vars
+class(mixed_vars[1])
+class(mixed_vars[2])
+class(mixed_vars[3])
+```
+
+#使用中括號搭配索引值從向量選出元素
+#用判斷運算子來對向量進行篩選
+#如果不只一個條件，我們可以使用 &（AND） 以及 |（OR） 這兩個符號連結判斷條件
+
+```{r}
+#方法一：中括號搭配索引值
+favorite_season <- four_seasons[3]
+favorite_season
+favorite_seasons <- four_seasons[c(-2, -4)] # 我喜歡春天或秋天
+favorite_seasons
+
+#方法二：判斷運算子
+my_favorite_season <- four_seasons == "autumn"
+four_seasons[my_favorite_season]
+my_favorite_seasons <- four_seasons == "spring" | four_seasons == "autumn" # 我喜歡春天或秋天
+four_seasons[my_favorite_seasons]
+```
+
+#向量運算
+```{r}
+numvec<-1:10 # c(1,2,3,4,5,6,7,8,9,10)
+numvec+3 # 所有元素+3
+numvec*2 # 所有元素*2
+numvec1<-1:3 ## c(1,2,3)
+numvec2<-4:6 ## c(4,5,6)
+numvec1+numvec2
+numvec1*numvec2
+```
+
+#因素是由文字向量轉換而成，表示類別變數數據，可使用factor(資料向量)宣告
+#因素向量需要載明分類的類別，並說明此類別分類是名目尺度還是順序尺度
+#我們可以使用levels=類別次序，用levels參數設定分類類別
+#類別的種類與數目決定後通常不會再作更動
+#也可使用 ordered = TRUE 或 ordered = FALSE 表示順序尺度或名目尺度
+#若沒有寫此參數， R 語言會預設使用字母順序排序，此時可能會產生不符合直覺的排序
+
+#EX:大學中有大學生、碩士班學生與博士班學生三種類別的學生，使用方法為factor(資料向量,levels=類別次序)
+#levels參數可設定各類別的次序。任何元素都要是大學生、碩士班學生與博士班學生其中一種
+```{r}
+factor(c("大學生","碩士班學生","博士班學生"),
+ levels = c("大學生","碩士班學生","博士班學生"))
+ ordered = FALSE
+```
+
+```{r}
+four_seasons <- c("spring", "summer", "autumn", "winter")
+four_seasons
+four_seasons_factor < factor(four_seasons)
+four_seasons_factor
+four_seasons_factor <- factor(four_seasons, ordered = TRUE, levels = c("summer", "winter", "spring", "autumn"))
+four_seasons_factor
+temperatures <- c("warm", "hot", "cold")
+temp_factors <- factor(temperatures, ordered = TRUE, levels = c("cold", "warm", "hot"))
+temp_factors
+temperatures <- c("warm", "hot", "cold")
+temp_factors <- factor(temperatures, ordered = TRUE)
+temp_factors
+```
+
+#矩陣是能夠儲存列（Row）與欄（Column）的資料結構
+#Row 指的是水平方向資料，Column 指的是垂直方向資料(先 Row 後 Column)
+#一個矩陣大小以 mxn表示，這個矩陣的外觀具有 m 個水平方向資料，n 個垂直方向資料
+
+#建立矩陣使用 matrix() 函數，可指定參數 nrow ncol 表示列數與行數
+#也可使用 byrow 的參數指定要用什麼順序擺放原先在向量中的元素
+#byrow 參數的預設值為 FALSE ，如果沒有特別指定就是以垂直的方向擺放矩陣
+```{r}
+my_mat <- matrix(1:6, nrow = 2)
+my_mat
+my_mat <- matrix(1:6, nrow = 2, ncol = 3, byrow = TRUE)
+my_mat
+```
+
+#矩陣與向量有一點很相似的特性，只包含一種變數類型
+```{r}
+my_mat <- matrix(c(1, 2, TRUE, FALSE, 3, 4), nrow = 2)
+my_mat
+class(my_mat[, 2]) # 原本第二欄（2nd column）的輸入是兩個邏輯值
+```
+
+#矩陣以中括號搭配索引值選出裡面的變數，跟向量不同，有兩個維度的索引值必須指定，所以要用 [m, n] 兩個索引值來搭配選擇
+#可以透過判斷運算子來對矩陣進行篩選
+```{r}
+my_mat <- matrix(1:6, nrow = 2)
+my_mat
+
+#方法一：中括號搭配索引值
+my_mat[2, 3] # 選出位於（2, 3）這個位置的 6
+my_mat[2, ] # 選出所有第二列（2nd row）的元素
+my_mat[, 3] # 選出所有第三欄（2nd column）的元素
+
+#方法二：判斷運算子???
+filter <- my_mat < 6 & my_mat > 1
+my_mat[filter]
+```
+
+#運用 data.frame()函數手動創造資料框
+#除了將資料框直接輸出在命令列（Console），我們可以使用 View()函數瀏覽資料框的外觀與內容
+```{r}
+team_name <- c("Chicago Bulls", "Golden State Warriors")
+wins <- c(72, 73)
+losses <- c(10, 9)
+is_champion <- c(TRUE, FALSE)
+season <- c("1995-96", "2015-16")
+great_nba_teams <- data.frame(team_name, wins, losses, is_champion, season)
+View(great_nba_teams)
+
+#資料框不像矩陣僅能包含一種變數類型
+#例子 great_nba_teams 資料框中，有文字（ team_nam e、season）、整數（wins、losses）
+#與邏輯值（ is_champion ），我們可以用 str() 函數觀察資料框的變數類型
+great_nba_teams <- data.frame(team_name, wins, losses, is_champion, season, stringsAsFactors = FALSE)
+str(great_nba_teams)
+```
+
+#因素向量修正為文字
+#建立的時候在 data.frame() 函數指定 stringsAsFactors = FALSE
+#事後使用 as.character() 函數進???變數類型的轉換。
+```{r}
+team_name <- c("Chicago Bulls", "Golden State Warriors")
+wins <- c(72, 73)
+losses <- c(10, 9)
+is_champion <- c(TRUE, FALSE)
+season <- c("1995-96", "2015-16")
+#方法一：stringsAsFactors = FALSE
+great_nba_teams <- data.frame(team_name, wins, losses, is_champion, season, stringsAsFactors = FALSE)
+#方法二:as.character()
+great_nba_teams <- data.frame(team_name, wins, losses, is_champion, season)
+great_nba_teams[, 1] <- as.character(great_nba_teams[, 1])
+great_nba_teams[, 5] <- as.character(great_nba_teams[, 5])
+```
+
+#資料框架同樣能夠以 [m, n] 中括號搭配兩個索引值來選擇出變數
+#資料框架支援使用變數名稱來選擇，可用 [, "變數名稱"] 寫法
+#資料框架支援使用變數名稱來選擇，可用 $變數名稱 寫法
+#可以透過判斷運算???來對資料框架進行篩選
+```{r}
+team_name <- c("Chicago Bulls", "Golden State Warriors")
+wins <- c(72, 73)
+losses <- c(10, 9)
+is_champion <- c(TRUE, FALSE)
+season <- c("1995-96", "2015-16")
+great_nba_teams <- data.frame(team_name, wins, losses, is_champion, season)
+#方法一：中括號搭配索引值
+great_nba_teams[1, 1] # 選出第一個變數的第一個觀測值 "Chicago Bulls"
+great_nba_teams[1, ] # 選出第一個觀測值
+great_nba_teams[, 1] # 選出第一個變數
+#方法二：使用變數名稱來選擇
+great_nba_teams[, "season"]
+# **方法三：使用變數名稱與$來選擇**
+great_nba_teams$team_name
+#方法四：使用判斷運算???
+great_nba_teams <- data.frame(team_name, wins, losses, is_champion, season, stringsAsFactors = FALSE)
+filter <- great_nba_teams$is_champion == TRUE
+great_nba_teams[filter, ] # 注意這個逗號
+```
+
+#陣列（array）是矩陣的強化版，除了原有的水平方向資料（Row）與垂直方向資料（Column，）我們可以再多指定一個維度
+#就是在一個陣列的物件之中，可以允許我們儲存多個矩陣
+```{r}
+my_arr <- array(1:20, dim = c(2, 2, 5))
+my_arr
+```
+
+#從陣列選出變數
+#使用中括號搭配索引值選擇時，需要有三個維度的索引值，分別為第幾列、第幾行與第幾個矩陣
+#如此可以選擇出矩陣、變數、觀察值與元素等
+```{r}
+my_arr <- array(1:20, dim = c(2, 2, 5))
+my_arr[, , 1] # 第一個矩陣
+my_arr[, , 2] # 第二個矩陣
+my_arr[, , 3] # 第三個矩陣
+my_arr[, , 4] # 第四個矩陣
+my_arr[, , 5] # 第五個矩陣
+my_arr[1, , 2] # 選出第一個矩陣的第二個 row（觀察值）
+my_arr[, 2, 2] # 選出第二個矩陣的第二個 column （變數）
+my_arr[1, 2, 2] # 選出 7（元素）
+```
+
+#利用 list() 函數收納不同類型的物件
+```{r}
+# 單變數元素如文字數字、一維文字數字向量
+listSample<-list(Students=c("Tom","Kobe","Emma","Amy"),Year=2017,
+ Score=c(60,50,80,40),School="CGU")
+listSample
+```
+```{r}
+# 例：單變數元素、一維數字與文字向量、二維矩陣與資料框
+title <- "Great NBA Teams"
+teams <- c("Chicago Bulls", "Golden State Warriors")
+wins <- c(72, 73)
+losses <- c(10, 9)
+winning_percentage <- wins / (wins + losses)
+season <- c("1995-96", "2015-16")
+wins_losses <- matrix(c(wins, losses), nrow = 2)
+df <- data.frame(Teams = teams, Winning_Percentage = winning_percentage, Season = season)
+great_nba_teams <- list(title, teams, wins_losses, df)
+great_nba_teams
+```
+
+#要選擇清單裡面的物件，要用 [[]] 雙中括號選擇出物件
+#建立清單的同時，如果指定了物件的命名，就可以在選擇時使用 $物件名稱 
+```{r}
+list(1,2,3)
+[[1]]
+[[2]]
+[[3]]
+list(c(1,2,3))
+[[1]]
+list3 <- list(c(1,2,3), 3:7)
+[[1]]
+[[2]]
+```
+```{r}
+#方法一：用雙中括號選
+great_nba_teams[[1]] # 選出清單中的第一個物件
+great_nba_teams[[2]] # 選出清單中的第二個物件
+great_nba_teams[[3]] # 選出清單中的第三個物件
+great_nba_teams[[4]] # 選出清單中的第四個物件
+great_nba_teams[[3]][1, ] # 選出芝加哥公牛隊 1995-96 的戰績
+great_nba_teams[3][1, ] # 選出芝加哥公牛隊 1995-96 的戰績會產???錯誤
+#方法二：用`$物件名稱`＃有點問題
+great_nba_teams$teams # 選出 teams 這個向量
+great_nba_teams$df # 選出 df 這個資料框
+great_nba_teams$teams[1, ] # 選出 teams 這個向量選出芝加哥公???隊 1995-96 的戰績
+great_nba_teams[[4]]$winning_percentage # 選出創紀錄的球季勝率
+```
+
+#我們可以利用 lm() 這個函數建立一個 lm_fit 清單
+#這個清單中，可以取出裡面的coefficients這個物件（是一個向量），就可以知道 x 跟 y 的關係，跟我們建立時的設定完全相同
+```{r}
+x <- 1:10
+y <- 2 * x + 5
+lm_fit <- lm(formula = y ~ x)
+lm_fit$coefficients
+lm_fit$coefficients[1] # 截距為 5
+lm_fit$coefficients[2] # x 係數為 2
+```
