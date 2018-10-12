@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#隨堂練習(加分!!有把第四節所有練習都做完)
+# 隨堂練習(加分!!有把第四節所有練習都做完)
 
 #我們有一個文字向量 weekdays 是一週的星期一到星期五
 #請您將最喜歡的週五（Happy Friday）從這個向量中用索引值選出來並且指派給 favorite_day
