@@ -67,7 +67,7 @@ my_arr <- array(1:1000, dim = c(10, 10, 10))
 my_arr[5,2,4]
 ```
 
-# 我們已經建立好幾個物件，請您幫我們收納進一個清單中叫做 worstnbateams，並利用 [[索引值]] 從清單中選出 wins 這個向量
+#我們已經建立好幾個物件，請您幫我們收納進一個清單中叫做 worstnbateams，並利用 [[索引值]] 從清單中選出 wins 這個向量
 ```{r}
 title <- "Worst NBA Teams"
 teams <- c("Charlotte Bobcats", "Philadelphia 76ers")
