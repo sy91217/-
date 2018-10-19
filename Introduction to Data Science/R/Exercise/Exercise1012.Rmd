@@ -1,0 +1,828 @@
+---
+title: "Exercise1012"
+author: "A105260028"
+date: "2018/10/12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#在 R 語言中我們使用 if 與 else 建立出不同的兩個分支。 使用if-else，若if後所接邏輯判斷為真(TRUE)，就會
+執行if下方之程式碼，若為偽(FALSE)，則執行else下面之程式碼，若程式中沒有else片段，則不執行任何程
+式碼
+```{r}
+if (條件⼀) {
+ # 程式⼀
+} else {
+ # 程式⼆
+}
+```
+
+#在兩種天氣條件下，使用 if 跟 else 就可以建立出一個兩種劇本的行程
+```{r}
+weather <- sample(c("sunny", "rainy"), size = 1)
+weather
+if (weather == "sunny"){
+ print("Running outdoors!")
+} else {
+ print("Working out in the gym!")
+}
+```
+
+#如果 weather 為 "sunny" 晴天，就在戶外跑步
+```{r}
+weather <- sample(c("sunny", "rainy"), size = 1)
+weather
+if (weather == "sunny"){
+ print("Running outdoors!")
+} else {
+ print("Working out in the gym!")
+}
+```
+
+#如果 weather 不是 "sunny" 晴天，就上健身房運動
+```{r}
+weather <- sample(c("sunny", "rainy"), size = 1)
+weather
+if (weather == "sunny"){
+ print("Running outdoors!")
+} else {
+ print("Working out in the gym!")
+}
+```
+
+#練習：若考試分數大於等於60分，則印出及格字樣，小於60分則印出不及格字樣
+```{r}
+score<-59
+if(score>=60){
+ print("及格")
+}else{
+ print("不及格")
+}
+score<-80
+if(score>=60){
+ print("及格")
+}else{
+ print("不及格")
+}
+```
+
+#奇偶數。整數除以 2 的餘數只會有兩種答案，使用 if-else 結構依照餘數的值回傳對應的訊息
+```{r}
+my_seq <- 1:10
+for (i in my_seq) {
+ if (i %% 2 == 0) {
+ print(paste(i, "是偶數"))
+ } else {
+ print(paste(i, "是奇數"))
+ }
+}
+```
+
+#在 R 語言中我們使用 if、else if 與 else 建立出不同的三個分分支。也就是，在使用多重邏輯時，我們會在if和
+else間新增邏輯區段else if
+```{r}
+if (條件⼀) {
+ # 程式⼀
+} else if (條件⼆) {
+ # 程式⼆
+} else {
+ # 程式三
+}
+```
+#如果條件一的判斷結果為 TRUE 就執行程式一，條件二的判斷結果為 TRUE 就執行程式二；假如條件一與條
+件二的判斷結果皆為 FALSE，就執行程式三
+
+#在三種天氣條件下，使用 if、else if 與 else 可以建立出一個三種劇本的行程
+```{r}
+weather <- sample(c("sunny", "rainy", "cloudy"), size = 1)
+weather
+if (weather == "sunny"){
+ print("Running outdoors!")
+} else if (weather == "cloudy"){
+ print("Cycling!")
+} else {
+ print("Working out in the gym!")
+}
+```
+
+#如果 weather 為 "sunny" 晴天，就在戶外跑步
+```{r}
+weather <- sample(c("sunny", "rainy", "cloudy"), size = 1)
+weather
+if (weather == "sunny"){
+ print("Running outdoors!")
+} else if (weather == "cloudy"){
+ print("Cycling!")
+} else {
+ print("Working out in the gym!")
+}
+
+```
+
+#如果 weather 為 "cloudy" 陰天，就去騎單車
+```{r}
+weather <- sample(c("sunny", "rainy", "cloudy"), size = 1)
+weather
+if (weather == "sunny"){
+ print("Running outdoors!")
+} else if (weather == "cloudy"){
+   print("Cycling!")
+} else {
+ print("Working out in the gym!")
+}
+```
+
+#如果 weather 既不是 "sunny" 亦不是 "cloudy" 那就去健身房運動
+```{r}
+weather <- sample(c("sunny", "rainy", "cloudy"), size = 1)
+weather
+ if (weather == "sunny"){
+    print("Running outdoors!")
+}  else if (weather == "cloudy"){
+ print("Cycling!")
+} else {
+ print("Working out in the gym!")
+}
+
+```
+
+#若考試分數大於等於90分，印出優良，介於60到90分間，印出及格，小於60分則印出不及格
+```{r}
+score<-95
+if(score>=90){
+ print("優秀")
+}else if(score>=60){
+ print("及格")
+}else{
+ print("不及格")
+}
+```
+
+整數除以 3 的餘數會有三種答案，使用 if-else if-else 結構依照餘數的值回傳對應的訊息
+```{r}
+my_seq <- 1:10
+for (i in my_seq) {
+ if (i %% 3 == 0) {
+ print(paste(i, "可以被 3 整除"))
+ } else if (i %% 3 == 1) {
+ print(paste(i, "除以 3 餘數是 1"))
+ } else {
+ print(paste(i, "除以 3 餘數是 2"))
+ }
+}
+```
+
+#在四種或更多個天氣條件下，依然使用 if、else if 與 else 建立出一個四種劇本的行程
+```{r}
+weather <- sample(c("sunny", "cloudy", "drizzle", "showers", "storm"), size = 1)
+weather
+if (weather == "sunny"){
+ print("Running outdoors!")
+} else if (weather == "cloudy"){
+ print("Cycling!")
+} else if (weather == "drizzle") {
+ print("Working out in the gym!")
+} else {
+ print("Couch potato.")
+}
+```
+
+#如果 weather 為 "sunny" 晴天，就在戶外跑步
+```{r}
+ weather <- sample(c("sunny", "cloudy", "drizzle", "showers", "storm"), size = 1)
+ weather
+ if (weather == "sunny"){
+ print("Running outdoors!")
+} else if (weather == "cloudy"){
+ print("Cycling!")
+} else if (weather == "drizzle") {
+ print("Working out in the gym!")
+} else {
+ print("Couch potato.")
+}
+```
+
+#如果 weather 為 "cloudy" 陰天，就去騎單車
+```{r}
+ weather <- sample(c("sunny", "cloudy", "drizzle", "showers", "storm"), size = 1)
+ weather
+ if (weather == "sunny"){
+ print("Running outdoors!")
+} else if (weather == "cloudy"){
+ print("Cycling!")
+} else if (weather == "drizzle") {
+ print("Working out in the gym!")
+} else {
+ print("Couch potato.")
+}
+```
+
+#如果 weather 為 "drizzle" 毛毛雨，就去健身房運動
+```{r}
+ weather <- sample(c("sunny", "cloudy", "drizzle", "showers", "storm"), size = 1)
+ weather
+ if (weather == "sunny"){
+ print("Running outdoors!")
+} else if (weather == "cloudy"){
+ print("Cycling!")
+} else if (weather == "drizzle") {
+ print("Working out in the gym!")
+} else {
+ print("Couch potato.")
+}
+```
+
+#如果 weather 既不是 "sunny"、"cloudy" 亦不是 "drizzle" 就待在家裡看電視
+```{r}
+ weather <- sample(c("sunny", "cloudy", "drizzle", "showers", "storm"), size = 1)
+ weather
+ if (weather == "sunny"){
+ print("Running outdoors!")
+} else if (weather == "cloudy"){
+ print("Cycling!")
+} else if (weather == "drizzle") {
+ print("Working out in the gym!")
+} else {
+ print("Couch potato.")
+}
+```
+
+#巢狀if是指在if區段程式碼內包含其他if-else判斷
+#若國文分數與英文分數皆大於等於60分，印出全部及格。國文分數大於等於60分，英文小於60分，則印
+國文及格，英文再加油。以此類推，還有英文及格、國文再加油，以及全部不及格兩種可能性
+```{r}
+CHscore<-95 ##國文成績
+ENscore<-55 ##英文成績
+if(CHscore>=60){
+ if(ENscore>=60){
+ print("全部及格")
+ }else{
+ print("國文及格，英文再加油")
+ }
+}else{
+ if(ENscore>=60){
+ print("英文及格，國文再加油")
+ }else{
+ print("全部不及格")
+ }
+}
+```
+
+#ifelse()函數 可以取代if-else敘述，使用方法為 ifelse(邏輯判斷,判斷為真要執⾏的程式碼,判斷為偽要執行的程式碼)  #ifelse()函數 可一次判斷多個元素
+
+# 及格、不及格的程式碼重寫如下
+```{r}
+score<-80
+ifelse(score>=60,"及格","不及格")
+scoreVector<-c(30,90,50,60,80)
+ifelse(scoreVector>=60,"及格", "不及格")
+```
+
+#一個 for 迴圈的外觀架構長得像這個樣子
+```{r}
+for (i in x){
+ # 每次迭代要執執行的程式
+}
+```
+
+#在第一次的迭代（iteration）中，i 是 x[1]；第二次的迭代中，i 是 x[2]；以此類推，然後在每一次迭代時，都
+會執執行大括號 {} 裡面的程式
+#R語言的for迴圈寫法和其他語言不同，必須先建立需要逐一執行的參數向量或序列，再使用for迴圈逐一執行
+```{r}
+for (n in 1:10){
+ #n為單一變數，1:10為需要逐一執行的參數向量
+ print(n)
+}
+```
+
+#假設我們現在想做一件事情：將 R 語言中的一個內建向量 month.name 分別輸出，寫作成 for 迴圈的話，可以寫成這樣
+```{r}
+for (month in month.name){
+ print(month)
+ }
+```
+
+#一個 while 迴圈的邏輯與外觀架構長得像這樣
+```{r}
+while (某種條件){
+ # 每次迭代要執行的程式
+}
+```
+
+#在每一次的迭代之前，R 語言都會去檢查while邏輯判斷是否為真，亦即小括號 () 中的某種條件是否成立。若邏輯判斷結果為真，就會執行每次迭代要執行的程式，一旦條件不成立邏輯判斷為偽，則會結束迴圈執行
+```{r}
+x <- 0
+while (x<=5) {
+ print(x)
+ x<-x+1
+}
+```
+
+#如果我們想將內建向量 month.name 分別輸出，寫作成 while 迴圈的話，可以寫成這樣
+```{r}
+i <- 1
+while (i < 13){
+ print(month.name[i])
+ i <- i + 1
+ }
+```
+#很重要的一行是 i <- i + 1，假如忘記寫這一航程式，我們的 while 迴圈會無限次數地一直輸出 "January"，原
+因是小括號 () 中條件（1 < 13）永遠都成立，所以不斷地執行 print(month.name[1])
+
+#舉例說明: 假如我們現在投擲一枚公正的銅板，想知道總共需要投擲幾次才會出現三個正面
+#我們寫了一段簡單的程式來模擬這個過程，其中 sample() 就是從向量中隨機抽樣的函數，size 參數可以指定隨機抽樣的個數
+```{r}
+flip_results <- c() # 建立一個空的向量來放置每一次投擲的結果
+coin <- c(TRUE, FALSE) # TRUE 代表正面，FALSE 代表反面⾯
+n_flips <- 1 # 從第一次投擲開始記錄
+while (sum(flip_results) < 3){
+ flip_results[n_flips] <- sample(coin, size = 1) # 將每次投擲結果記錄起來
+ n_flips <- n_flips + 1 # 準備記錄下一次的投擲結果
+}
+flip_results # 印出每次投擲的紀錄
+length(flip_results) # 總共投擲了幾次
+```
+
+#加入流程控制讓使用for迴圈時更有彈性
+#和if-else函數合用
+```{r}
+for (n in 1:10){
+ if(n%%2==0){ #偶數直接輸出數字
+ print(n)
+ }else{
+ print("奇數") #奇數則輸出"奇數"
+ }
+}
+```
+
+#在迴圈執行的過程中，若遇特殊情形想結束迴圈執行，可使用'break指令，滿足某種條件時候就會離開迴圈
+#舉例來說，將內建向量 month.name 分別輸出時，假如碰到 "April" 就離開迴圈
+```{r}
+for (month in month.name){
+ if (month == "April"){
+ break
+ } else {
+ print(month)
+ }
+ }
+```
+
+#在迴圈執行的過程中，若遇特殊情形想跳過迴圈執行可使用next指令，滿足一某種條件時候略過那一次迭代。
+#舉例來說，將內建向量 month.name 分別輸出時，假如碰到 "April" 就略過不輸出
+```{r}
+for (month in month.name){
+ if (month == "April"){
+ next
+ } else {
+ print(month)
+ }
+ }
+```
+
+#隨堂練習
+
+#我們建立了一個 week 向量裡面有一個星期中的七天名稱，請您使用 for 迴圈一一輸出每一天
+```{r}
+week <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+for (week in week){
+ print(week)
+} 
+```
+
+#同樣的一個 week 向量，請您使用 while 迴圈一一輸出每一天
+```{r}
+week <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+i <- 1
+while (i < 8){
+ print(week[i])
+ i <- i + 1
+ }
+```
+
+# 同樣的一個 week 向量，請您在使用迴圈一一輸出每一天的時候略過週一到週五，只輸出我們最愛的週末兩天即可
+```{r}
+week <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+for (week in week){
+  if (week == "Monday"){
+    next
+  } else if (week == "Tuesday"){
+    next
+  } else if (week == "Wednesday"){
+    next
+  } else if (week == "Thursday"){
+   next
+  } else if (week == "Friday"){
+   next
+  } else {
+    print(week)
+  }
+}
+```
+
+#abs() 是能夠將我們輸入的數值轉換為絕對值的函數，它的作用跟 || 相同
+```{r}
+abs(-5)
+abs(-5:-1)
+abs("Hello")
+```
+
+#sqrt() 是能夠將我們輸入的數值開根號的函數
+```{r}
+sqrt(2)
+sqrt(1:10)
+```
+
+#ceiling() 是能夠將輸入的數值無條件進位的函數
+```{r}
+ceiling(9.527)
+nums <- sqrt(c(7, 17, 27, 37, 47))
+nums
+ceiling(nums)
+```
+
+#floor() 是能夠將輸入的數值無條件捨去的函數
+```{r}
+floor(9.527)
+nums <- sqrt(c(7, 17, 27, 37, 47))
+nums
+floor(nums)
+```
+
+#round() 是能夠指定保留幾個小數位數的函數，以四捨五入的規則決定，使用的時候可以多給一個參數digits
+#預設是 digits = 0，就是取為整數
+```{r}
+round(9.527)
+round(9.527, digits = 0)
+round(9.527, digits = 1)
+round(9.527, digits = 2)
+```
+
+#exp() 是能夠將輸入的數值 x 轉換為 ex 的函數（其中 e = 2.718282）
+```{r}
+exp(1)
+exp(2)
+```
+
+#log() 是能夠將輸入的數值取自然對數（Natural logarithm）的函數，它的作用跟 ln 相同
+```{r}
+log(exp(1))
+log(exp(2))
+log(exp(3))
+```
+
+#log10() 是能夠將輸入的數值取 10 為底對數（Logarithm）的函數，它的作用跟 log10 相同
+```{r}
+log10(10)
+log10(10^2)
+log10(10^3)
+```
+
+#toupper() 是能夠將輸入的文字全部轉換為大寫的函數
+```{r}
+toupper("Learn R the easy way")
+```
+
+#tolower() 是能夠將輸入的文字全部轉換為小寫的函數
+```{r}
+tolower("Learn R the easy way")
+```
+
+#substr() 是能夠將輸入的文字擷取部分出來的函數，使用的時候可以搭配兩個參數，start 指定要從哪一個位置開始擷取
+#stop 指定要擷取到哪一個位置停下來
+```{r}
+my_char <- "Learn R the easy way"
+substr(my_char, start = 1, stop = 5)
+substr(my_char, start = 7, stop = 7)
+substr(my_char, start = 9, stop = 11)
+substr(my_char, start = 13, stop = 16)
+substr(my_char, start = 18, stop = 20)
+```
+
+#grep() 是能夠在文字向量中搜尋某種樣式並將符合樣式的索引值回傳的函數
+#使用 pattern 參數指定樣式，如果搜尋後沒有符合樣式的，則會回傳 integer(0)
+```{r}
+my_char <- c("Learn", "R", "the", "easy", "way")
+grep(pattern = "Learn", my_char)
+grep(pattern = "R", my_char)
+grep(pattern = "the", my_char)
+grep(pattern = "easy", my_char)
+grep(pattern = "way", my_char)
+grep(pattern = "xyz", my_char)
+```
+
+#grep() 可以指定參數 ignore.case 為 TRUE，這樣在搜尋樣式的時候會忽略文字的大小寫（預設為 FALSE，不忽略大小寫。）
+```{r}
+my_char <- c("Learn", "R", "the", "easy", "way")
+grep(pattern = "learn", my_char)
+integer(0)
+grep(pattern = "learn", my_char, ignore.case = TRUE)
+```
+
+#sub() 除了可以像 grep() 搜尋樣式，搜尋到以後還可以指定要替換為其他的文字
+#使用 pattern 參數指定樣式，使用 replacement 參數指定要替換而成的文字
+```{r}
+my_char <- c("Learn", "R", "the", "easy", "way")
+sub(pattern = "easy", replacement = "effortless", my_char)
+my_char <- c("Learn", "R", "the", "easy", "way")
+sub(pattern = "EASY", replacement = "effortless", my_char)
+sub(pattern = "EASY", replacement = "effortless", my_char, ignore.case = TRUE)
+```
+
+#strsplit() 是能夠將一個文字切割成向量的函數，使用 split 參數可以指定要根據什麼分割符號來進行文字的切割
+#這個函數的輸出是以清單的資料結構儲存
+```{r}
+my_char <- "Learn R the easy way"
+strsplit(my_char, split = " ") # 使用一個空格作為切割的根據
+my_char <- "Learn,R,the,easy,way"
+strsplit(my_char, split = ",") # 使用一個逗號作為切割的根據
+```
+
+#paste() 是能夠連結文字的函數，使用 sep 參數可以指定連結起來的時候要使用什麼樣的分隔符號，預設是以一個空格來連結
+```{r}
+char_1 <- "Learn"
+char_2 <- "R"
+char_3 <- "the"
+char_4 <- "easy"
+char_5 <- "way"
+paste(char_1, char_2, char_3, char_4, char_5)
+paste(char_1, char_2, char_3, char_4, char_5, sep = ",")
+paste(char_1, char_2, char_3, char_4, char_5, sep = "")
+```
+
+#mean() 是能夠將輸入數值向量的平均值回傳的函數
+```{r}
+my_seq <- 1:5
+mean(my_seq)
+my_seq <- c(my_seq, NA) # 加入一個 NA
+mean(my_seq) # 輸出為 NA
+mean(my_seq, na.rm = TRUE) # 排除遺漏值
+```
+
+#sd() 是能夠將輸入數值向量的標準差回傳的函數
+```{r}
+my_seq <- 1:5
+sd(my_seq)
+my_seq <- c(my_seq, NA) # 加入一個 NA
+sd(my_seq)
+sd(my_seq, na.rm = TRUE) # 排除遺漏值
+```
+
+#median() 是能夠將輸入數值向量的中位數回傳的函數
+```{r}
+my_seq <- 1:5
+median(my_seq)
+my_seq <- c(my_seq, NA) # 加入一個 NA
+median(my_seq)
+median(my_seq, na.rm = TRUE) # 排除遺漏值
+```
+
+#range() 是能夠將輸入數值向量的最大值與最小值回傳的函數
+```{r}
+my_seq <- 1:5
+range(my_seq)
+my_seq <- c(my_seq, NA) # 加入一個 NA
+range(my_seq)
+range(my_seq, na.rm = TRUE) # 排除遺漏值
+```
+
+#sum() 是能夠將輸入數值向量所有數值加總回傳的函數
+```{r}
+my_seq <- 1:5
+sum(my_seq)
+my_seq <- c(my_seq, NA) # 加入一個 NA
+sum(my_seq)
+sum(my_seq, na.rm = TRUE) # 排除遺漏值
+```
+
+#max() 是能夠將輸入數值向量的最大值回傳的函數
+```{r}
+my_seq <- 1:5
+max(my_seq)
+my_seq <- c(my_seq, NA) # 加入一個 NA
+max(my_seq)
+max(my_seq, na.rm = TRUE) # 排除遺漏值
+```
+
+#min() 是能夠將輸入數值向量的最小值回傳的函數
+```{r}
+my_seq <- 1:5
+min(my_seq)
+my_seq <- c(my_seq, NA) # 加入一個 NA
+min(my_seq)
+min(my_seq, na.rm = TRUE) # 排除遺漏值
+```
+
+#隨堂練習
+
+# R 語言有內建圓周率（ π ），只要輸入 pi 就可以使用它
+#請練習使用 ceiling()、floor() 與 round() 函數將它轉換為 4、3 與 3.14
+```{r}
+pi
+ceiling(pi)
+floor(pi)
+round(pi, digits = 2)
+```
+
+# 請在 R 語言的命令列（console）用一段文字輸出今天的系統日期
+```{r}
+today_char <- "Today is:"
+sys_date <- Sys.Date()
+paste(today_char, sys_date)
+```
+
+#我們有一個數值向量 num_vector ，請使用描述性統計幫我們計算它的總和與中位數
+```{r}
+num_vector <- c(11:14, NA)
+sum(num_vector, na.rm = NA)
+median(num_vector, na.rm = TRUE)
+```
+
+#函數包含四個重要的部分:
+名字
+參數
+程式碼本體
+回傳值
+
+#一個自訂函數的外觀架構長得像這個樣子
+```{r}
+function_name <- function(輸入1, 輸入2, ..., 輸入 n, 參數1, 參數2, ..., 參數 n){
+ # 呼叫函數後執行的程式（程式碼本體）
+ return(輸出)
+}
+```
+
+#首先要給函數取個名字（function_name），告訴 R 語言這是一個函數的物件（function(...)）
+#接著在小括號中放入想好的輸入（inputs）與參數（parameters），然後在大括號內縮排撰寫我們主要的程式
+#最後把輸出結果放在 return() 函數裡面。
+
+#例自訂函數: 將輸入的數字平方之後回傳，並叫它 my_squared() 函數
+```{r}
+# 自訂函數
+my_squared <- function(x){
+ y <- x^2
+ return(y)
+ }
+# 呼叫函數
+my_squared(2)
+my_squared(-2:2)
+```
+
+#例自訂函數：計算圓的面積，並叫它circle_area()函數
+當使用者輸入一個圓形的半徑，它會計算出該圓形的面積
+```{r}
+# 自訂函數
+circle_area <- function(r){
+ area <- pi * r^2 # R 語言有內建圓周率 pi
+ return(area)
+ }
+# 呼叫函數
+circle_area(3)
+circle_area(5)
+```
+
+#例自訂函數：計算圓的周長，叫做 circle_circum()
+#當使用者輸入一個圓形的半徑，它會計算出該圓形的周長
+```{r}
+# 自訂函數
+circle_circum <- function(r){
+ circum <- 2 * pi * r # R 語言有內建圓周率 pi
+ return(circum)
+ }
+# 呼叫函數
+circle_circum(3)
+circle_circum(5)
+```
+
+#例自訂函數：讓使用者決定要計算圓面積或周長
+#我們把前面兩個自訂函數的功能整合起來到一個函數裡面，並正式納入參數（parameters）的觀念到這個自訂函數中，使用一個邏輯值參數 is_area 來讓使用者呼叫時決定要計算面積或者周長
+```{r}
+# 自訂函數
+circle_calculator <- function(r, is_area){
+ area <- pi * r^2
+ circum <- 2 * pi * r
+ if (is_area == TRUE){
+ return(area)
+ } else {
+ return(circum)
+ }
+ }
+# 呼叫函數
+circle_calculator(3, is_area = TRUE)
+circle_calculator(3, is_area = FALSE)
+```
+
+#給 isarea 一預設值為 TRUE，意思就是說當使用者呼叫函數時沒有指定isarea 參數時，函數會指派 TRUE 給該參數（假定使用者是計算圓面積。）
+```{r}
+ # 自訂函數
+circle_calculator <- function(r, is_area = TRUE){
+ area <- pi * r^2
+ circum <- 2 * pi * r
+ if (is_area == TRUE){
+ return(area)
+ } else {
+ return(circum)
+ }
+ }
+ # 呼叫函數
+circle_calculator(3)
+```
+
+#們將圓面積與周長包含在一個清單中輸出，讓使用者依照名稱選擇圓面積或者周長
+```{r}
+# 自訂函數
+circle_calculator <- function(r){
+ area <- pi * r^2
+ circum <- 2 * pi * r
+ ans_list <- list(area = area, circum = circum) # 為清單中的物件命名方便用 $ 取用
+ return(ans_list)
+ }
+# 呼叫函數
+circle_with_r_3 <- circle_calculator(3)
+circle_with_r_3$area
+circle_with_r_3$circum
+```
+
+#使用 list 資料結構將回傳值包裝起來再依名稱呼叫
+```{r}
+# 定義自訂函數
+ironmen_stats <- function(ironmen_vector) {
+ max_ironmen <- max(ironmen_vector)
+ min_ironmen <- min(ironmen_vector)
+ ttl_groups <- length(ironmen_vector)
+ ttl_ironmen <- sum(ironmen_vector)
+ stats_list <- list(max_ironmen = max_ironmen,
+ min_ironmen = min_ironmen,
+ ttl_groups = ttl_groups,
+ ttl_ironmen = ttl_ironmen
+ )
+ return(stats_list)
+}
+# 呼叫自訂函數
+ironmen <- c(50, 8, 16, 12, 6, 62)
+paste("最多：", ironmen_stats(ironmen)$max_ironmen, sep = '')
+paste("最少：", ironmen_stats(ironmen)$min_ironmen, sep = '')
+paste("總組數：", ironmen_stats(ironmen)$ttl_groups, sep = '')
+paste("總鐵人數：", ironmen_stats(ironmen)$ttl_ironmen, sep = '')
+```
+
+#利用 R 語言的內建函數 length() 計算一個向量的長度（元素個數），我們可以試著自訂 my_length() 函數做一樣的事情
+```{r}
+# 自訂函數
+my_length <- function(x){
+ counts <- 0
+ for (i in x){
+ counts <- counts + 1
+ }
+ return(counts)
+ }
+# 建立一個向量
+ my_vec <- seq(from = 15, to = 87, by = 3)
+# 呼叫內建（外部）與自訂函數
+length(my_vec)
+my_length(my_vec)
+```
+
+#利用 R 語言的內建函數 sum() 計算一個向量的元素總和，我們可以試著自訂 my_sum() 函數做一樣的事情
+```{r}
+# 自訂函數
+my_sum <- function(x){
+ summation <- 0
+ for (i in x){
+ summation <- summation + i
+ }
+ return(summation)
+ }
+# 呼叫內建與自訂函數
+sum(1:10)
+my_sum(1:10)
+
+```
+
+#巢狀自訂函數 - sum() 函數 + length()函數
+```{r}
+# 定義自訂函數
+my_mean <- function(input_vector) {
+ my_sum <- function(input_vector) {
+ temp_sum <- 0
+ for (i in input_vector) {
+ temp_sum <- temp_sum + i
+ }
+ return(temp_sum)
+ }
+ my_length <- function(input_vector) {
+ temp_length <- 0
+ for (i in input_vector) {
+ temp_length <- temp_length + 1
+ }
+ return(temp_length)
+ }
+ return(my_sum(input_vector) / my_length(input_vector))
+}
+# 呼叫自訂函數
+my_vector <- c(51, 8, 18, 13, 6, 64)
+my_mean(my_vector)
+```
+

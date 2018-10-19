@@ -1,0 +1,300 @@
+---
+title: "Exercise0928"
+author: "A105260028"
+date: "2018/09/28"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#浮點數(有小數點)的數值,R 語言預設儲存為浮點數
+```{r}
+my_num1 <- 2.33
+my_num1
+my_num2 <- 2.0
+my_num2
+my_num3 <- 2
+my_num3
+```
+
+#當我們輸入一個整數並加入L,R語言就會儲存為整數(integer)
+```{r}
+my_int1 <- 2L
+my_int1
+my_int2 <- 2.0L
+my_int2
+my_int3 <- 2.33L
+my_int3
+```
+#整數帶有不必要的小數位數,會回傳警示訊息,但依舊儲存為整數;若帶有小數位數的數字後加上L,會回傳警示訊息,忽略L儲存為數值
+
+#進行判斷條件或者篩選的時候就會需要使用邏輯值(logical),只有TRUE與FALSE這兩個值,或簡寫為T與F,要注意大小寫!!!
+```{r}
+TRUE
+FALSE
+T
+F
+True
+true
+```
+
+#也可以透過判斷條件得到邏輯值的輸出
+```{r}
+8 > 7 # 判斷 8 是否???於 7
+8 < 7 # 判斷 8 是否???於 7
+8 >= 7 # 判斷 8 是否???於等於 7
+8 <= 7 # 判斷 8 是否???於等於 7
+8 == 7 # 判斷 8 是否等於 7
+8 != 7 # 判斷 8 是否不等於 7
+7 %in% c(8, 7) # 判斷 7 是否包含於???個 c(8, 7) 之中
+```
+
+#在R語言中可以使用單引號(')或雙引號(")來建立文字(character),若在數字前後加上雙引號,數字也會被儲存為文字形式
+```{r}
+first_name <- "Tony"
+first_name
+class(first_name)
+```
+
+#Sys.Date() 是不需要任何輸入就會輸出電腦系統日期的函數
+```{r}
+sys_date <- Sys.Date() # 系統日期
+sys_date # 看起來跟文字相同
+class(sys_date)
+```
+
+#Sys.time() 是不需要任何輸入就會輸出電腦系統時間的函數
+```{r}
+sys_time <- Sys.time() # 系統時間
+sys_time # 看起來跟文字相同
+class(sys_time)
+```
+
+# 隨堂練習
+
+#身高.體重.BMI練習
+```{r}
+my_weight
+my_height <- 162
+my_weight <- 42
+
+my_height
+my_weight
+
+bmi <- 42 / (162 / 100)^2
+bmi
+```
+
+#姓名練習
+```{r}
+my_name <- "陳昱均"
+my_name
+```
+
+#函數 class() 可告訴我們輸入的變數是什麼類型
+```{r}
+class(2)
+class(2L)
+class(TRUE)
+class("Learning R the easy way")
+class(Sys.Date())
+class(Sys.time())
+```
+
+#前一節中所有的指令都可進行變數類型判斷
+```{r}
+my_int1 <- 2L
+class(my_int1)
+my_int2 <- 2.0L
+class(my_int2)
+my_int3 <- 2.33L
+class(my_int3)
+class(TRUE)
+class(FALSE)
+class(T)
+class(F)
+class(True)
+class(true)
+first_name <- 'Tony'
+first_name
+class(first_name)
+```
+
+#除了使用 class() 查詢變數類型外，也使用一系列 is.類型名稱() 的函數回傳邏輯值,並用回傳的結果TRUE或者FALSE判斷類型
+#除了判斷日期與時間變數類型要使用 inherits() 函數,其他變數類型都可以使用 is.類型名稱() 這樣形式的函數判斷
+
+#是否為數值
+```{r}
+is.numeric(8.7)
+is.numeric("8.7")
+```
+
+#是否為整數
+```{r}
+is.integer(7L)
+is.integer(7)
+```
+
+#是否為邏輯值
+```{r}
+is.logical(FALSE)
+is.logical("FALSE")
+```
+
+#是否為文字
+```{r}
+is.character("TRUE")
+is.character(TRUE)
+```
+
+#是否為日期
+```{r}
+inherits(Sys.Date(), what = "Date") # Sys.Date() 是日期類型
+inherits("1970-01-01", what = "Date") # "1970-01-01" 是文字類型
+```
+
+#是否為時間
+```{r}
+inherits(Sys.time(), what = "POSIXct") # Sys.time() 是時間類型
+inherits("1970-01-01 00:00:00", what = "POSIXct") # "1970-01-01 00:00:00" 是文字類型
+```
+
+#變數類型的轉換則是透過一系列 as.類型名稱() 的函數進行轉換
+
+#使用 as.numeric() 函數轉換變數為數值類型,可以輸入整數.邏輯值.日期或時間讓R語言轉換成數值
+```{r}
+as.numeric(7L)
+as.numeric(TRUE)
+as.numeric(FALSE)
+as.numeric(Sys.Date())
+as.numeric(Sys.time())
+```
+
+#使用 as.integer() 函數轉換變數為數值類型,可以輸入沒有小數位數的數值.邏輯值.日期或時間讓R語言轉換成整數
+```{r}
+as.integer(7)
+as.integer(TRUE)
+as.integer(FALSE)
+as.integer(Sys.Date())
+as.integer(Sys.time())
+```
+
+#使用 as.logical() 函數轉換變數為邏輯值類型,輸入數值或整數類型的0會轉換成為FALSE,其他的數字則一律轉換為TRUE
+#輸入文字類型的"TRUE"."True"或"true"則會轉換成為TRUE,反之亦同
+```{r}
+as.logical(0)
+as.logical(0L)
+as.logical(1L)
+as.logical(-1.3)
+as.logical(87)
+as.logical("TRUE")
+as.logical("True")
+as.logical("true")
+as.logical("FALSE")
+as.logical("False")
+as.logical("false")
+```
+
+#使用 as.character() 函數轉換變數為文字類型,可以輸入任意的變數類型讓R語言轉換成文字
+```{r}
+as.character(8.7)
+as.character(87L)
+as.character(TRUE)
+as.character(Sys.Date())
+as.character(Sys.time())
+```
+
+#使用 as.Date() 函數可以轉換文字變數為日期類型,而 as.Date() 函數預設可以識別的格式為 %Y-%m-%d 或 %Y/%m/%d
+#如果是其他非預設的文字變數格式,必須要加入 format 參數告知日期被記錄的文字變數格式為何,函數才能順利轉換
+```{r}
+as.Date("1970-01-01")
+as.Date("1970/01/01")
+as.Date("01-01-1970") # 轉換錯誤
+as.Date("01-01-1970", format = "%m-%d-%Y") # 轉換正確
+as.Date("01/01/70") # 不是預設格式，轉換失敗
+as.Date("01/01/70", format = "%m/%d/%y") # 轉換正確
+```
+
+#使用 as.POSIXct() 函數可以轉換文字變數為時間類型,如果沒有指定參數,tz = 會預設使用電腦的時區
+```{r}
+as.POSIXct("1970-01-01 00:00:00")
+as.POSIXct("1970-01-01 00:00:00", tz = "GMT")
+```
+
+#日期變數類型是可以被轉換為整數,文字不行. 日期變數類型是可以進行四則運算,文字類型不行
+#R語言預設以西元 1970 年 1 月 1 日作為0,在這天以後的每天都 +1 來記錄,這天以前的每天都 -1來記錄
+```{r}
+sys_date <- Sys.Date() # 系統日期
+sys_date # 看起來跟文字相同
+class(sys_date)
+sys_date <- Sys.Date()
+sys_date_char <- as.character(sys_date) # 創造一個文字類型
+as.integer(sys_date)
+as.integer(sys_date_char)
+date_of_origin <- as.Date("1970-01-01")
+as.integer(date_of_origin)
+as.integer(date_of_origin + 1)
+as.integer(date_of_origin - 1)
+date_of_origin
+date_of_origin + 1
+date_of_origin - 1
+sys_date <- Sys.Date()
+sys_date_char <- as.character(sys_date) # 創造一個文字類型
+sys_date - 1 # 昨天的日期
+sys_date_char - 1
+```
+
+#R語言預設以西元1970年1月1日格林威治標準時間(Greenwich Mean Time，GMT)00時00分00秒作為0 #在這個時間點以後的每秒都+1來記錄,這個時間點以前的每秒都-1來記錄
+```{r}
+sys_time <- Sys.time() # 系統時間
+sys_time # 看起來跟文字相同
+class(sys_time)
+sys_time <- Sys.time()
+as.integer(sys_time)
+time_of_origin <- as.POSIXct("1970-01-01 00:00:00", tz = "GMT")
+as.integer(time_of_origin)
+as.integer(time_of_origin + 1)
+as.integer(time_of_origin - 1)
+time_of_origin
+time_of_origin + 1
+time_of_origin - 1
+time_of_origin_cst <- as.POSIXct("1970-01-01 08:00:00")
+as.integer(time_of_origin_cst)
+```
+日期與字串的相關轉換操作,可以考慮使用簡單易懂的lubridate套件.
+如果想要將年/月/日格式的文字轉換為日期物件,可使用ymd()#函數(y表年year,m表月month,d表日day)
+如果想要將月/日/年格式的文字轉換為日期物件,則使用mdy()函數
+
+# 隨堂練習
+
+#香港搖滾樂隊Beyond於1983年成立,假設成立日期是1983-12-31,請將成立日期指派給beyond_start並轉換成整數輸出在命令列
+```{r}
+beyond_start <- as.Date("1983-12-31")
+as.integer(beyond_start)
+```
+
+#請以系統日期計算今年是Beyond成立幾週年紀念
+```{r}
+beyond_start <- as.Date("1983-12-31")
+days_diff <- Sys.Date() - beyond_start # 計算天數差距
+years_diff <- days_diff / 365 # 除以 365 換算成年
+years_diff
+```
+
+#1999年9月21日1時47分16秒發生震央位於南投縣集集鎮,芮氏規模 7.3 的地震,請以文字記錄這個時間,並指派給majorquaketime
+```{r}
+major_quake_time <- "1999-9-21 01:47:16"
+```
+
+#1999年9月21日1時57分15秒發生第一個芮氏規模超過6的餘震,請以文字記錄這個時間,並指派給firstaftershocktime
+```{r}
+first_aftershock_time <- "1999-9-21 01:57:15"
+```
+#將前兩題的生成的變數轉換為時間類型,計算間隔多久發生第一個芮氏規模超過6的餘震
+```{r}
+major_quake_time <- as.POSIXct("1999-9-21 01:47:16")
+first_aftershock_time <- as.POSIXct("1999-9-21 01:57:15")
+first_aftershock_time - major_quake_time
+```
+
